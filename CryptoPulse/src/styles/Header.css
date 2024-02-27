@@ -1,0 +1,46 @@
+header {
+  background-color: #0b3d91; /* Deep Blue */
+  color: #ffffff; /* White or a light text color for contrast */
+  padding: 20px;
+  text-align: center;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.searchForm {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px; /* Adjust the max width as needed */
+}
+
+header input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+header button {
+  background-color: #00568c; /* Darker shade for button */
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+}
+
+nav h5 {
+  margin: 0; /* Remove default margin */
+}

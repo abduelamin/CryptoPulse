@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.roboto-condensed {
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Specify the desired weight */
+  font-style: normal;
+}
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f5f5f5; /* Light Gray */
+  color: #333333; /* Charcoal Gray */
+}
+
+/*
+
+button {
+  background-color: #0b3d91;
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #00568c;
+}
+
+.highlight {
+  color: #ffd700;
+}
+
+.call-to-action {
+  background-color: #00ff9b;
+  color: #ffffff;
+}
+
+.call-to-action:hover {
+  background-color: #00d884;
+} */
