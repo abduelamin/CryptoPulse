@@ -30,5 +30,3 @@ const Header = ({ search, setSearch }) => {
 };
 
 export default Header;
-
-// https://creativeresource.co.uk/images/submit.svg?e666110d541bfaae59561245ffdd803b  -- give credit to this source for using their image

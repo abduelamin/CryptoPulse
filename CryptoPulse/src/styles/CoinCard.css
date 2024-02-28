@@ -1,0 +1,56 @@
+.cryptoCard {
+  border: 1px solid #ddd;
+  border-radius: 12px; /* Increase border-radius for a more rounded appearance */
+  padding: 20px;
+  margin: 20px;
+  background-color: #fff;
+  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  width: 300px; /* Set a consistent width for all cards */
+}
+
+.cryptoCard:hover {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Slightly transparent white on hover */
+}
+
+.topHalfOfCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px; /* Add margin to separate the top half from the bottom half */
+}
+
+.bottomHalfOfCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.rankHolder {
+  font-size: 18px;
+}
+
+.infoHolder {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Add extra spacing between elements in the top half */
+}
+
+.nameHolder span {
+  font-weight: bold;
+}
+
+.imageHolder img {
+  max-width: 60px; /* Increase the size of the image */
+  max-height: 60px;
+  border-radius: 50%;
+}
+
+.priceHolder,
+.mktCapHolder,
+.PriceChangeHolder {
+  margin-top: 8px; /* Adjust spacing between info items */
+}

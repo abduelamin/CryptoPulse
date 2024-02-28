@@ -49,3 +49,14 @@ button:hover {
 .call-to-action:hover {
   background-color: #00d884;
 } */
+
+/* This is styling for coin card*/
+
+.displaySection {
+  display: flex;
+  flex-wrap: wrap; /* Allow cards to wrap to the next row if needed */
+  justify-content: center;
+  align-items: flex-start; /* Align items to the start of the cross axis (top) */
+  margin-top: 60px;
+  gap: 4em;
+}
