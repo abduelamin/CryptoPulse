@@ -1,19 +1,35 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import PropagateLoader from "react-spinners/PropagateLoader";
 import { Route, Routes, NavLink, Outlet, useNavigate } from "react-router-dom";
 import Header from "./Components/Header";
 import CoinCard from "./Components/CoinCard";
 import WatchList from "./Components/WatchList";
 import AssetPage from "./Components/AssetPage";
 import TableHeading from "./Components/TableHeading";
+import useFetch from "./Components/useFetch";
+import SearchedCoin from "./Components/SearchedCoin";
 
 function App() {
+  // this is for coincard logic
   const [search, setSearch] = useState("");
-  const [cryptoData, setCryptoData] = useState([]);
+  const initialURL =
+    "https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&page=1&per_page=20&order=market_cap_desc";
+  const [API, setAPI] = useState(initialURL);
+  const { loading, cryptoData } = useFetch(API);
+
+  // This is for single search coin logic
+  const [coinSearch, setCoinSearch] = useState([]);
+  const [url, setUrl] = useState("");
+  const [singleLoading, setSingleLoading] = useState(false);
+  const searchURL = (searchedItem) => {
+    setUrl(`https://api.coingecko.com/api/v3/coins/${searchedItem}`);
+  };
 
   useEffect(() => {
-    const url =
-      "https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&page=1&per_page=20&order=market_cap_desc";
+    const newController = new AbortController();
+    const signal = newController.signal;
+
     const options = {
       method: "GET",
       headers: {
@@ -22,27 +38,55 @@ function App() {
       },
     };
 
-    const fetchCrptoData = async () => {
+    const fetchSearch = async () => {
       try {
-        const response = await fetch(url, options);
-        const data = await response.json();
-        console.log(data);
-        setCryptoData(data);
+        const response = await fetch(url, options, { signal });
+        setSingleLoading(true);
+
+        if (!response.ok) {
+          throw new Error("Crypto Data Could Not Be Fetched");
+        } else {
+          const result = await response.json();
+          console.log(result);
+          setCoinSearch(result);
+          console.log(coinSearch);
+        }
       } catch (error) {
-        console.error(error);
+        error.name === "AbortError"
+          ? console.error("Fetch aborted")
+          : console.error(error.message);
+      } finally {
+        setSingleLoading(false);
       }
     };
 
-    fetchCrptoData();
-  }, []);
+    if (url) {
+      fetchSearch();
+    }
+
+    return () => {
+      newController.abort();
+    };
+  }, [url]);
 
   return (
     <div className="appContainer">
-      <Header search={search} setSearch={setSearch} />
+      <Header
+        search={search}
+        setSearch={setSearch}
+        searchURL={searchURL}
+        setAPI={setAPI}
+      />
+
       <section className="displaySection">
-        {cryptoData.map((crypto) => {
-          return <CoinCard key={crypto.name} crypto={crypto} />;
-        })}{" "}
+        {loading || singleLoading ? (
+          <PropagateLoader color="#dd2b0b" size={30} speedMultiplier={1} />
+        ) : (
+          cryptoData.map((crypto) => (
+            <CoinCard key={crypto.name} crypto={crypto} />
+          ))
+        )}
+        <SearchedCoin key={coinSearch.name} coin={coinSearch} />;
       </section>
     </div>
   );
@@ -89,3 +133,35 @@ This must have several divs
       
 
 */
+// useEffect(() => {
+//   const url =
+//     "https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&page=1&per_page=20&order=market_cap_desc";
+//   const options = {
+//     method: "GET",
+//     headers: {
+//       "X-RapidAPI-Key": "caa0b747e0mshc869274a8f77de6p125aa0jsn9f3f6ee2b9a8",
+//       "X-RapidAPI-Host": "coingecko.p.rapidapi.com",
+//     },
+//   };
+
+//   const fetchCrptoData = async () => {
+//     try {
+//       const response = await fetch(url, options);
+//       setLoading(true);
+
+//       if (!response.ok) {
+//         throw new Error("Crypto Data Could Not Be Fetched");
+//       }
+
+//       const data = await response.json();
+//       console.log(data);
+//       setCryptoData(data);
+//     } catch (error) {
+//       console.error(error.message);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   fetchCrptoData();
+// }, []);

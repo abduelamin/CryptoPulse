@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import "../styles/CoinCard.css";
-
-const CoinCard = ({ crypto }) => {
-  const formatMarketCap = (marketCap) => {
+import React from "react";
+import "../styles/SearchedCoin.css";
+const SearchedCoin = ({ coin }) => {
+  const displayMarketCap = (marketCap) => {
     const billion = 1e9;
     const million = 1e6;
 
@@ -18,37 +17,40 @@ const CoinCard = ({ crypto }) => {
   return (
     <article className="cryptoCard">
       <div className="topHalfOfCard">
-        <div className="rankHolder">#{crypto?.market_cap_rank}</div>
+        <div className="rankHolder">#{coin?.market_cap_rank}</div>
         <div className="nameHolder">
           <span>
-            {crypto?.name}({crypto?.symbol.toUpperCase()})
+            {coin?.name}({coin?.symbol.toUpperCase()})
           </span>
         </div>
         <div className="infoHolder">
           <div className="imageHolder">
-            <img src={crypto?.image} alt={crypto?.symbol} />
+            <img src={coin?.image?.small} alt={coin?.symbol} />
           </div>
         </div>
       </div>
 
       <div className="bottomHalfOfCard">
         <div className="priceHolder">
-          <strong>Price:</strong> ${crypto?.current_price}
+          <strong>Price:</strong> ${coin?.market_data?.current_price?.usd}
         </div>
 
         <div className="mktCapHolder">
-          <strong>Market Cap:</strong> ${formatMarketCap(crypto?.market_cap)}
+          <strong>Market Cap:</strong> $
+          {displayMarketCap(coin?.market_data?.market_cap?.usd)}
         </div>
 
         <div className="PriceChangeHolder">
-          <strong>Daily Change:</strong>{" "}
+          <strong>Daily Change:</strong>
           <span
             style={{
               color:
-                crypto?.price_change_percentage_24h > 0.0 ? "green" : "red",
+                coin?.market_data?.price_change_percentage_24h > 0.0
+                  ? "green"
+                  : "red",
             }}
           >
-            {crypto?.price_change_percentage_24h.toFixed(2)}%
+            {coin?.market_data?.price_change_percentage_24h.toFixed(2)}%
           </span>
         </div>
       </div>
@@ -56,4 +58,4 @@ const CoinCard = ({ crypto }) => {
   );
 };
 
-export default CoinCard;
+export default SearchedCoin;

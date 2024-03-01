@@ -1,0 +1,37 @@
+1:
+
+A regular expression, often abbreviated as "regex" or "regexp," is a sequence of characters that defines a search pattern. It is used for matching strings within other strings, searching and replacing substrings, and validating input based on a specified pattern.
+
+In JavaScript, regular expressions are represented by the RegExp object. You can create a regular expression using the RegExp constructor or by using a literal notation between slashes (/).
+
+Here are  ways to create a regex pattern that matches strings containing only letters:
+
+
+const onlyLettersPattern = /^[A-Za-z]+$/;
+ the pattern ^[A-Za-z]+$ means:
+
+^: Asserts the start of the string.
+[A-Za-z]: Matches any uppercase or lowercase letter.
++: Ensures that there is at least one or more letters.
+$: Asserts the end of the string.
+
+
+regEx have their own methods and one of which is .test() - this method takes the string as an arugment as tests it against the regexp. if the string follows the regexp pattern then it returns true, otherwise its false.
+
+e.g. 
+
+onlyLettersPattern.test(mystring)
+
+in summary: 
+           Regexp are objects we create via /^[]+$/  and within the [] we specify the pattern we're looking for i.e. only letters either uppercase or small case. 
+
+           Regexp have methods such as test() which we can then pass the string as () arugment and it will see if follows the regexp stated?
+------------------------------------------------------
+
+2: 
+
+Sometimes you may need to use and if statemenet before calling the async function within useEffect. - why?
+Because this prevents fetching occuring when the dependency is a falsy. for example in my app.jsx iM FETCHING 
+the api call whenever a user searches a coin, however on intial page load the search bar is empty therefore
+to prevent the useffect from invoking the fetch function I placed an if statement to tell it to only invoke
+the function whena turthy is placed.
