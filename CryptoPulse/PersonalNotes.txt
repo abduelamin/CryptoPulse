@@ -30,8 +30,12 @@ in summary:
 
 2: 
 
-Sometimes you may need to use and if statemenet before calling the async function within useEffect. - why?
+Sometimes you may need to use an if statemenet before calling the async function within useEffect. - why?
 Because this prevents fetching occuring when the dependency is a falsy. for example in my app.jsx iM FETCHING 
 the api call whenever a user searches a coin, however on intial page load the search bar is empty therefore
 to prevent the useffect from invoking the fetch function I placed an if statement to tell it to only invoke
-the function whena turthy is placed.
+the function when a turthy is placed.
+
+3:
+
+Similarly if you are rendering a component based on a fetch call you must use conditional rendering to ensure that the component only renders once the fetchcall has been completed - for example the SearchedCoin component of mine needs the coinSearch state but on page load this coinSearch state is an empty string so rendering it based on null/falsy value will lead to error (as some methods i.e. toUpperCase in the component can't be carried out). Therefore I made it whereby the component only renders once the coinSearch state has been changed to a truthy.
