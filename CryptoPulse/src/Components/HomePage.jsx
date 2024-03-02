@@ -3,6 +3,7 @@ import useFetch from "./useFetch";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import CoinCard from "./CoinCard";
 import SearchedCoin from "./SearchedCoin";
+import useModal from "./useModal";
 
 const HomePage = ({
   searchURL,
@@ -12,7 +13,9 @@ const HomePage = ({
   coinSearch,
   API,
   singleLoading,
+  handleCardClick,
 }) => {
+  const { openModal } = useModal();
   const { loading, cryptoData } = useFetch(API);
   //   const initialURL =
   //     "https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&page=1&per_page=20&order=market_cap_desc";
@@ -38,14 +41,18 @@ const HomePage = ({
           throw new Error("Crypto Data Could Not Be Fetched");
         } else {
           const result = await response.json();
-          console.log(result.symbol.toUpperCase());
-          setCoinSearch(result);
-          // console.log(coinSearch);
+          console.log(result);
+          // Check if the required property exists in the result
+          if (result && result.market_cap_rank) {
+            setCoinSearch(result);
+          } else {
+            openModal();
+          }
         }
       } catch (error) {
         error.name === "AbortError"
           ? console.error("Fetch aborted")
-          : console.error(error.message);
+          : openModal();
       } finally {
         setSingleLoading(false);
       }
@@ -65,10 +72,18 @@ const HomePage = ({
       {loading || singleLoading ? (
         <PropagateLoader color="#dd2b0b" size={30} speedMultiplier={1} />
       ) : coinSearch ? (
-        <SearchedCoin key={coinSearch.name} coin={coinSearch} />
+        <SearchedCoin
+          key={coinSearch.name}
+          coin={coinSearch}
+          handleCardClick={handleCardClick}
+        />
       ) : (
         cryptoData.map((crypto) => (
-          <CoinCard key={crypto.name} crypto={crypto} />
+          <CoinCard
+            key={crypto.name}
+            crypto={crypto}
+            handleCardClick={handleCardClick}
+          />
         ))
       )}
     </section>

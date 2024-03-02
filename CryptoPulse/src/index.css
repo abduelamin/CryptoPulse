@@ -22,36 +22,6 @@ body {
   color: #333333; /* Charcoal Gray */
 }
 
-/*
-
-button {
-  background-color: #0b3d91;
-  color: #ffffff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #00568c;
-}
-
-.highlight {
-  color: #ffd700;
-}
-
-.call-to-action {
-  background-color: #00ff9b;
-  color: #ffffff;
-}
-
-.call-to-action:hover {
-  background-color: #00d884;
-} */
-
-/* This is styling for coin card*/
-
 .displaySection {
   display: flex;
   flex-wrap: wrap; /* Allow cards to wrap to the next row if needed */

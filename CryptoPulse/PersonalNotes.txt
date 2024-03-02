@@ -2,7 +2,7 @@
 
 A regular expression, often abbreviated as "regex" or "regexp," is a sequence of characters that defines a search pattern. It is used for matching strings within other strings, searching and replacing substrings, and validating input based on a specified pattern.
 
-In JavaScript, regular expressions are represented by the RegExp object. You can create a regular expression using the RegExp constructor or by using a literal notation between slashes (/).
+In JavaScript, regular expressions are represented by the RegExp object. 
 
 Here are  ways to create a regex pattern that matches strings containing only letters:
 
@@ -33,9 +33,20 @@ in summary:
 Sometimes you may need to use an if statemenet before calling the async function within useEffect. - why?
 Because this prevents fetching occuring when the dependency is a falsy. for example in my app.jsx iM FETCHING 
 the api call whenever a user searches a coin, however on intial page load the search bar is empty therefore
-to prevent the useffect from invoking the fetch function I placed an if statement to tell it to only invoke
-the function when a turthy is placed.
+to prevent the useffect from invoking the fetch function (i.e. fetching an empty endpoint) I placed an if statement to tell it to only invoke
+the function when a truthy is placed.
 
 3:
 
 Similarly if you are rendering a component based on a fetch call you must use conditional rendering to ensure that the component only renders once the fetchcall has been completed - for example the SearchedCoin component of mine needs the coinSearch state but on page load this coinSearch state is an empty string so rendering it based on null/falsy value will lead to error (as some methods i.e. toUpperCase in the component can't be carried out). Therefore I made it whereby the component only renders once the coinSearch state has been changed to a truthy.
+
+
+
+
+
+// Things to fix: 
+
+1: modal - // I have a big issue that needs solving - When i make this modal appear, the user can still intereact with the webpage using the 'tab' button and thus can cause multiple modals to appear. How do I make it so that the user can only intereact with the pop up and nothing else?
+
+
+

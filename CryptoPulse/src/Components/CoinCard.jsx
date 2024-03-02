@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/CoinCard.css";
 
-const CoinCard = ({ crypto }) => {
+const CoinCard = ({ crypto, handleCardClick }) => {
   const formatMarketCap = (marketCap) => {
     const billion = 1e9;
     const million = 1e6;
@@ -16,7 +16,12 @@ const CoinCard = ({ crypto }) => {
   };
 
   return (
-    <article className="cryptoCard">
+    <article
+      className="cryptoCard"
+      onClick={() => {
+        handleCardClick(crypto?.id);
+      }}
+    >
       <div className="topHalfOfCard">
         <div className="rankHolder">#{crypto?.market_cap_rank}</div>
         <div className="nameHolder">

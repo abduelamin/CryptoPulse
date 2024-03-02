@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Header.css";
 import { useNavigate } from "react-router-dom";
+import useModal from "./useModal";
 
 const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
   const navigate = useNavigate();
@@ -8,26 +9,9 @@ const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    //handles errors based on user not typing a word
-    const openModal = () => {
-      const modalContainer = document.createElement("div");
-      modalContainer.className = "modal-container";
+    const { openModal } = useModal();
 
-      const modalContent = document.createElement("div");
-      modalContent.className = "modal-content";
-      modalContent.textContent = "The Coin You Are Looking For Does Not Exist";
-
-      const closeButton = document.createElement("button");
-      closeButton.className = "modal-button";
-      closeButton.textContent = "Close";
-      closeButton.addEventListener("click", () => {
-        document.body.removeChild(modalContainer);
-      });
-
-      modalContent.appendChild(closeButton);
-      modalContainer.appendChild(modalContent);
-      document.body.appendChild(modalContainer);
-    };
+    // This modal logic has been passed into
 
     // This is the regexp and the test method in action.
     const onlyLetters = /^[A-Za-z]+$/;
@@ -45,6 +29,7 @@ const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
     }
 
     setSearch("");
+    navigate("/"); // This solely for the purpose of when the user is inside the asset detail page and they search something. so on submit it goes back to the homepage which will render their searched it
   };
   return (
     <header>
