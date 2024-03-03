@@ -56,6 +56,7 @@ function App() {
         setCoinSearch={setCoinSearch}
         handleCardClick={handleCardClick}
       />
+
       <Routes>
         <Route
           path="/"

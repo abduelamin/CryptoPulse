@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useFetch from "./useFetch";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import CoinCard from "./CoinCard";
 import SearchedCoin from "./SearchedCoin";
 import useModal from "./useModal";
+import Gainers from "./Gainers";
 
 const HomePage = ({
   searchURL,
@@ -16,6 +17,7 @@ const HomePage = ({
   handleCardClick,
   formatMarketCap,
 }) => {
+  const [gainerFetched, setGainerFetched] = useState();
   const { openModal } = useModal();
   const { loading, cryptoData } = useFetch(API);
   //   const initialURL =
@@ -37,7 +39,6 @@ const HomePage = ({
       try {
         const response = await fetch(url, options, { signal });
         setSingleLoading(true);
-
         if (!response.ok) {
           throw new Error("Crypto Data Could Not Be Fetched");
         } else {
@@ -70,6 +71,8 @@ const HomePage = ({
 
   return (
     <section className="displaySection">
+      {/* {gainerFetched ? <Gainers setgainerFetched={setGainerFetched} /> : null} */}
+      <Gainers />
       {loading || singleLoading ? (
         <PropagateLoader color="#dd2b0b" size={30} speedMultiplier={1} />
       ) : coinSearch ? (
