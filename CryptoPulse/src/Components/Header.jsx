@@ -35,8 +35,8 @@ const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
     <header>
       <h1
         onClick={() => {
-          navigate("/");
           setCoinSearch("");
+          navigate("/");
         }}
       >
         Crypto Pulse

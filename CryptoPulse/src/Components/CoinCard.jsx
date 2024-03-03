@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import "../styles/CoinCard.css";
 
-const CoinCard = ({ crypto, handleCardClick }) => {
-  const formatMarketCap = (marketCap) => {
-    const billion = 1e9;
-    const million = 1e6;
+const CoinCard = ({ crypto, handleCardClick, formatMarketCap }) => {
+  // const formatMarketCap = (marketCap) => {
+  //   const billion = 1e9;
+  //   const million = 1e6;
 
-    if (marketCap >= billion) {
-      return (marketCap / billion).toFixed(2) + "B";
-    } else if (marketCap >= million) {
-      return (marketCap / million).toFixed(2) + "M";
-    } else {
-      return marketCap.toFixed(2);
-    }
-  };
+  //   if (marketCap >= billion) {
+  //     return (marketCap / billion).toFixed(2) + "B";
+  //   } else if (marketCap >= million) {
+  //     return (marketCap / million).toFixed(2) + "M";
+  //   } else {
+  //     return marketCap.toFixed(2);
+  //   }
+  // };
 
   return (
     <article

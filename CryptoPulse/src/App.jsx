@@ -28,48 +28,18 @@ function App() {
     setUrl(`https://api.coingecko.com/api/v3/coins/${searchedItem}`);
   };
 
-  // useEffect(() => {
-  //   const newController = new AbortController();
-  //   const signal = newController.signal;
+  const formatMarketCap = (marketCap) => {
+    const billion = 1e9;
+    const million = 1e6;
 
-  //   const options = {
-  //     method: "GET",
-  //     headers: {
-  //       "X-RapidAPI-Key": "caa0b747e0mshc869274a8f77de6p125aa0jsn9f3f6ee2b9a8",
-  //       "X-RapidAPI-Host": "coingecko.p.rapidapi.com",
-  //     },
-  //   };
-
-  //   const fetchSearch = async () => {
-  //     try {
-  //       const response = await fetch(url, options, { signal });
-  //       setSingleLoading(true);
-
-  //       if (!response.ok) {
-  //         throw new Error("Crypto Data Could Not Be Fetched");
-  //       } else {
-  //         const result = await response.json();
-  //         console.log(result.symbol.toUpperCase());
-  //         setCoinSearch(result);
-  //         // console.log(coinSearch);
-  //       }
-  //     } catch (error) {
-  //       error.name === "AbortError"
-  //         ? console.error("Fetch aborted")
-  //         : console.error(error.message);
-  //     } finally {
-  //       setSingleLoading(false);
-  //     }
-  //   };
-
-  //   if (url) {
-  //     fetchSearch();
-  //   }
-
-  //   return () => {
-  //     newController.abort();
-  //   };
-  // }, [url]);
+    if (marketCap >= billion) {
+      return (marketCap / billion).toFixed(2) + "B";
+    } else if (marketCap >= million) {
+      return (marketCap / million).toFixed(2) + "M";
+    } else {
+      return marketCap.toFixed(2);
+    }
+  };
 
   const handleCardClick = (param) => {
     navigateToAsset(`/asset/${param}`);
@@ -99,6 +69,7 @@ function App() {
               API={API}
               singleLoading={singleLoading}
               handleCardClick={handleCardClick}
+              formatMarketCap={formatMarketCap}
             />
           }
         />
@@ -108,6 +79,7 @@ function App() {
             <AssetPage
               setSingleLoading={setSingleLoading}
               singleLoading={singleLoading}
+              formatMarketCap={formatMarketCap}
             />
           }
         />

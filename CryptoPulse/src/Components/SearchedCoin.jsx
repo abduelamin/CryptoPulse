@@ -1,19 +1,6 @@
 import React from "react";
 import "../styles/SearchedCoin.css";
-const SearchedCoin = ({ coin, handleCardClick }) => {
-  const displayMarketCap = (marketCap) => {
-    const billion = 1e9;
-    const million = 1e6;
-
-    if (marketCap >= billion) {
-      return (marketCap / billion).toFixed(2) + "B";
-    } else if (marketCap >= million) {
-      return (marketCap / million).toFixed(2) + "M";
-    } else {
-      return marketCap.toFixed(2);
-    }
-  };
-
+const SearchedCoin = ({ coin, handleCardClick, formatMarketCap }) => {
   return (
     <article
       className="cryptoCard"
@@ -42,7 +29,7 @@ const SearchedCoin = ({ coin, handleCardClick }) => {
 
         <div className="mktCapHolder">
           <strong>Market Cap:</strong> $
-          {displayMarketCap(coin?.market_data?.market_cap?.usd)}
+          {formatMarketCap(coin?.market_data?.market_cap?.usd)}
         </div>
 
         <div className="PriceChangeHolder">

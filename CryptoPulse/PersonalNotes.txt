@@ -49,4 +49,4 @@ Similarly if you are rendering a component based on a fetch call you must use co
 1: modal - // I have a big issue that needs solving - When i make this modal appear, the user can still intereact with the webpage using the 'tab' button and thus can cause multiple modals to appear. How do I make it so that the user can only intereact with the pop up and nothing else?
 
 
-
+2: Once inside the coin detail page when the user clicks on the h1 (return to homepage) it shows the previous search. Although the h1 is setting coinseaarch to empty it still returns to search page. unless I click it again.

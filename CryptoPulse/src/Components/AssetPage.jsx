@@ -3,7 +3,9 @@ import "../styles/AssetPage.css";
 import { useParams } from "react-router-dom";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import HomePage from "./HomePage";
-const AssetPage = ({ singleLoading, setSingleLoading }) => {
+import Chart from "./Chart";
+
+const AssetPage = ({ singleLoading, setSingleLoading, formatMarketCap }) => {
   const [coin, setCoin] = useState("");
   const { id } = useParams();
 
@@ -41,6 +43,16 @@ const AssetPage = ({ singleLoading, setSingleLoading }) => {
     };
   };
 
+  function removeLinksFromDescription(description) {
+    // Regular expression to match HTML link tags
+    const linkRegex = /<a\b[^>]*>(.*?)<\/a>/gi;
+
+    // Replace all link tags with an empty string
+    const descriptionWithoutLinks = description.replace(linkRegex, "");
+
+    return descriptionWithoutLinks;
+  }
+
   return (
     <section className="displaySection assetPage">
       {singleLoading ? (
@@ -52,7 +64,6 @@ const AssetPage = ({ singleLoading, setSingleLoading }) => {
               {coin?.name} ({coin?.symbol.toUpperCase()})
             </h1>
           </div>
-
           <div className="innerContent ">
             <div className="rank">
               <span className="rank-btn">Rank # {coin?.market_cap_rank}</span>
@@ -141,28 +152,44 @@ const AssetPage = ({ singleLoading, setSingleLoading }) => {
               <div className="left">
                 <div className="row">
                   <h4>24 hour High</h4>
-                  <p>{coin?.market_data?.high_24h?.usd}</p>
+                  <br />
+                  <p>$ {coin?.market_data?.high_24h?.usd}</p>
                 </div>
                 <div className="row">
                   <h4>24 hour Low</h4>
-                  <p>{coin?.market_data?.low_24h?.usd}</p>
+                  <br />
+                  <p>$ {coin?.market_data?.low_24h?.usd}</p>
                 </div>
               </div>
 
               <div className="right">
                 <div className="row">
                   <h4>Market Cap</h4>
-                  <p>${coin?.market_data?.market_cap?.usd}</p>
+                  <br />
+                  <p>$ {formatMarketCap(coin?.market_data?.market_cap?.usd)}</p>
                 </div>
                 <div className="row">
                   <h4>Circulating Supply</h4>
-                  <p>{coin?.market_data?.circulating_supply.toFixed(0)}</p>
+                  <br />
+                  <p>
+                    {formatMarketCap(
+                      coin?.market_data?.circulating_supply.toFixed(0)
+                    )}
+                  </p>
                 </div>
               </div>
             </div>
             <div className="content">
-              <div className="about">{coin?.description?.en}</div>
+              <div className="about">
+                {removeLinksFromDescription(coin?.description?.en)}
+              </div>
             </div>
+          </div>
+          <br />
+          <br />
+          {/* /* Added BR tags*/}
+          <div className="chartHolder">
+            <Chart coin={coin} />
           </div>
         </div>
       ) : (

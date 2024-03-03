@@ -1,0 +1,28 @@
+.chart-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.buttonHolder {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.buttonHolder button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buttonHolder button:hover {
+  background-color: #45a049;
+}

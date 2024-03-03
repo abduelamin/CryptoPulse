@@ -14,6 +14,7 @@ const HomePage = ({
   API,
   singleLoading,
   handleCardClick,
+  formatMarketCap,
 }) => {
   const { openModal } = useModal();
   const { loading, cryptoData } = useFetch(API);
@@ -76,6 +77,7 @@ const HomePage = ({
           key={coinSearch.name}
           coin={coinSearch}
           handleCardClick={handleCardClick}
+          formatMarketCap={formatMarketCap}
         />
       ) : (
         cryptoData.map((crypto) => (
@@ -83,6 +85,7 @@ const HomePage = ({
             key={crypto.name}
             crypto={crypto}
             handleCardClick={handleCardClick}
+            formatMarketCap={formatMarketCap}
           />
         ))
       )}
