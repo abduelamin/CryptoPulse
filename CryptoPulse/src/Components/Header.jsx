@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/Header.css";
 import { useNavigate } from "react-router-dom";
 import useModal from "./useModal";
+import Gainers from "./Gainers";
 
 const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
   const navigate = useNavigate();
@@ -10,8 +11,6 @@ const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
     e.preventDefault();
 
     const { openModal } = useModal();
-
-    // This modal logic has been passed into
 
     // This is the regexp and the test method in action.
     const onlyLetters = /^[A-Za-z]+$/;
@@ -25,7 +24,7 @@ const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
         "https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&page=1&per_page=20&order=market_cap_desc"
       );
     } else {
-      searchURL(search);
+      searchURL(search.toLowerCase());
     }
 
     setSearch("");
@@ -35,7 +34,7 @@ const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
     <header>
       <h1
         onClick={() => {
-          setCoinSearch("");
+          setCoinSearch(""); // This is supposed to set thecoinsearh to falsey and stop the asset rendering.
           navigate("/");
         }}
       >
@@ -43,7 +42,10 @@ const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
       </h1>
       <br />
       <br />
-      <h4 style={{ fontSize: "1.2rem", color: "#007BFF", lineHeight: "1.5" }}>
+      <h4
+        className="slogan"
+        // style={{ fontSize: "1.2rem", color: "#007BFF", lineHeight: "1.5" }}
+      >
         Stay Informed, Act Swiftly - Your Gateway to Real-Time Updates in the
         Crypto Universe!
       </h4>
@@ -59,7 +61,7 @@ const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
               setSearch(e.target.value);
             }}
           />
-          <button type="submit">Click Me</button>
+          <button type="submit">Search</button>
         </form>
         <nav>
           {status === "online" ? (
@@ -71,6 +73,7 @@ const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
           )}
         </nav>
       </div>
+      <Gainers />
     </header>
   );
 };

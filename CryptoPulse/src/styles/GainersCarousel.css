@@ -1,62 +1,59 @@
-/* GainersCarousel.css */
-
 .gainers-carousel-container {
   max-width: 90vw;
   margin: 20px auto;
   padding: 20px;
-  border: 1px solid #4a4a4a; /* Dark border color */
+
   border-radius: 12px;
-  background-color: #282c34; /* Dark background color */
+  background-color: none;
 }
 
 .gainers-carousel-title {
-  color: #61dafb; /* Bright blue text color */
+  color: burlywood;
   font-size: 28px;
   text-align: center;
   margin-bottom: 20px;
 }
 
 .gainer-card {
-  background-color: #353b48; /* Darker blue background */
+  background-color: #222531;
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 20px;
   transition: background-color 0.3s;
-  text-align: center; /* Center text */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Subtle box shadow */
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .gainer-card:hover {
-  background-color: #2f3642; /* Slightly darker on hover */
+  background-color: #2f3642;
 }
 
 .gainer-name {
   font-size: 20px;
-  color: #ecf0f1; /* Light text color */
+  color: #ecf0f1;
   margin-bottom: 15px;
 }
 
 .gainer-price {
   font-size: 24px;
-  color: #2ecc71; /* Green color for price */
+  color: #2ecc71;
   margin-bottom: 15px;
 }
 
 .gainer-change {
   font-size: 18px;
   margin-bottom: 15px;
-  color: #ecf0f1; /* Light text color for percentage */
+  color: #ecf0f1;
 }
 
 .gainer-card.gainer-up .gainer-change {
-  color: #2ecc71; /* Green color for positive change */
+  color: #2ecc71;
 }
 
 .gainer-card.gainer-down .gainer-change {
-  color: #e74c3c; /* Red color for negative change */
+  color: #e74c3c;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .gainers-carousel-container {
     max-width: 80vw;

@@ -17,12 +17,9 @@ const HomePage = ({
   handleCardClick,
   formatMarketCap,
 }) => {
-  const [gainerFetched, setGainerFetched] = useState();
   const { openModal } = useModal();
   const { loading, cryptoData } = useFetch(API);
-  //   const initialURL =
-  //     "https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&page=1&per_page=20&order=market_cap_desc";
-  //   const [API, setAPI] = useState(initialURL);
+
   useEffect(() => {
     const newController = new AbortController();
     const signal = newController.signal;
@@ -71,8 +68,6 @@ const HomePage = ({
 
   return (
     <section className="displaySection">
-      {/* {gainerFetched ? <Gainers setgainerFetched={setGainerFetched} /> : null} */}
-      <Gainers />
       {loading || singleLoading ? (
         <PropagateLoader color="#dd2b0b" size={30} speedMultiplier={1} />
       ) : coinSearch ? (

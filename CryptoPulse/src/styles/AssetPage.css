@@ -1,10 +1,10 @@
 .coinContainer {
-  max-width: 800px;
+  max-width: 100%;
   margin: auto;
-  padding: 40px;
+  padding: 20px;
   background: #f7f7f7;
   border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .coinContainer .content {
@@ -26,7 +26,7 @@
 .rank-btn {
   background: #e74c3c;
   color: #ffffff;
-  padding: 20px 30px; /* Increased padding for better visibility */
+  padding: 20px 30px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
@@ -40,15 +40,15 @@
 
 .coinHeading {
   display: flex;
-  flex-direction: column; /* Adjusted layout */
+  flex-direction: column;
   align-items: center;
   margin-top: 30px;
 }
 
 .coinHeading img {
-  width: 100px; /* Increased width for a larger image */
-  height: 100px; /* Increased height for a larger image */
-  margin-bottom: 15px; /* Adjusted margin for better spacing */
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #3498db;
@@ -85,7 +85,7 @@ th {
 
 .stats {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 30px;
 }
 
@@ -98,9 +98,38 @@ th {
   color: #2c3e50;
   line-height: 1.6;
   font-size: 1.2em;
+  padding: 20px;
 }
 
 .chartHolder {
   text-align: center;
-  margin-top: 20px;
+  max-width: 95vw;
+  margin-left: 1%;
+}
+
+@media (max-width: 768px) {
+  .coinContainer {
+    padding: 15px;
+  }
+
+  .innerContent {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  .stats {
+    flex-direction: column;
+  }
+}
+
+/* Previous styles on this looked more professional but wasn't responsive*/
+
+/* Hides bottom scroll bar because it gives a poor UX*/
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
 }

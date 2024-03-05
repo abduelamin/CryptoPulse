@@ -1,13 +1,29 @@
 header {
-  background-color: #0b3d91; /* Deep Blue */
-  color: #ffffff; /* White or a light text color for contrast */
+  background-color: #0d1421;
+
+  color: #ecf0f1;
   padding: 20px;
   text-align: center;
 }
 
-header h1:hover {
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+  color: burlywood;
+  letter-spacing: 2px;
+
   cursor: pointer;
 }
+
+.slogan {
+  font-size: 1.2rem;
+  color: burlywood;
+  line-height: 1.5;
+  font-style: italic;
+  opacity: 0.8;
+}
+
 .headerContainer {
   display: flex;
   flex-direction: column;
@@ -19,7 +35,7 @@ header h1:hover {
   display: flex;
   gap: 10px;
   width: 100%;
-  max-width: 400px; /* Adjust the max width as needed */
+  max-width: 400px;
 }
 
 header input {
@@ -28,10 +44,12 @@ header input {
   font-size: 1rem;
   border: none;
   border-radius: 5px;
+  /* background-color: #34495e; */
+  color: #34495e;
 }
 
 header button {
-  background-color: #00568c; /* Darker shade for button */
+  background-color: #2980b9;
   color: #ffffff;
   padding: 10px 15px;
   border: none;
@@ -45,5 +63,11 @@ nav {
 }
 
 nav h5 {
-  margin: 0; /* Remove default margin */
+  margin: 0;
+  color: #ecf0f1;
+  cursor: pointer;
+}
+
+nav h5:hover {
+  text-decoration: underline;
 }

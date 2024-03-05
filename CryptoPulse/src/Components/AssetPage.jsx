@@ -1,3 +1,4 @@
+// AssetPage.jsx
 import React, { useEffect, useState } from "react";
 import "../styles/AssetPage.css";
 import { useParams } from "react-router-dom";
@@ -44,12 +45,8 @@ const AssetPage = ({ singleLoading, setSingleLoading, formatMarketCap }) => {
   };
 
   function removeLinksFromDescription(description) {
-    // Regular expression to match HTML link tags
     const linkRegex = /<a\b[^>]*>(.*?)<\/a>/gi;
-
-    // Replace all link tags with an empty string
     const descriptionWithoutLinks = description.replace(linkRegex, "");
-
     return descriptionWithoutLinks;
   }
 
@@ -64,7 +61,7 @@ const AssetPage = ({ singleLoading, setSingleLoading, formatMarketCap }) => {
               {coin?.name} ({coin?.symbol.toUpperCase()})
             </h1>
           </div>
-          <div className="innerContent ">
+          <div className="innerContent">
             <div className="rank">
               <span className="rank-btn">Rank # {coin?.market_cap_rank}</span>
             </div>
@@ -161,7 +158,6 @@ const AssetPage = ({ singleLoading, setSingleLoading, formatMarketCap }) => {
                   <p>$ {coin?.market_data?.low_24h?.usd}</p>
                 </div>
               </div>
-
               <div className="right">
                 <div className="row">
                   <h4>Market Cap</h4>
@@ -179,15 +175,12 @@ const AssetPage = ({ singleLoading, setSingleLoading, formatMarketCap }) => {
                 </div>
               </div>
             </div>
-            <div className="content">
-              <div className="about">
-                {removeLinksFromDescription(coin?.description?.en)}
-              </div>
+            <div className="about">
+              {removeLinksFromDescription(coin?.description?.en)}
             </div>
           </div>
           <br />
           <br />
-          {/* /* Added BR tags*/}
           <div className="chartHolder">
             <Chart coin={coin} />
           </div>
@@ -200,13 +193,3 @@ const AssetPage = ({ singleLoading, setSingleLoading, formatMarketCap }) => {
 };
 
 export default AssetPage;
-
-/* 
-
-
-
-Price chart using chart.js
-
-
-
-*/

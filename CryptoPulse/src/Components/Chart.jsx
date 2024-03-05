@@ -49,10 +49,10 @@ const Chart = ({ coin }) => {
         {
           label: `Price in USD`,
           data: chartData.map((entry) => entry[1]),
-          borderColor: "#4caf50", // Green color
-          backgroundColor: "rgba(75, 192, 192, 0.2)", // Green background color with transparency
+          borderColor: "#4caf50",
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
           borderWidth: 2,
-          pointRadius: 1.2, // Larger point radius for better visibility
+          pointRadius: 1.2, // this controls the circles
         },
       ],
     };
