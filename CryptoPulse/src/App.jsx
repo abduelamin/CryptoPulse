@@ -1,15 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
-import { Route, Routes, NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Header from "./Components/Header";
-import CoinCard from "./Components/CoinCard";
-import WatchList from "./Components/WatchList";
+// import CoinCard from "./Components/CoinCard";
+// import WatchList from "./Components/WatchList";
 import AssetPage from "./Components/AssetPage";
-import useFetch from "./Components/useFetch";
-import SearchedCoin from "./Components/SearchedCoin";
+// import useFetch from "./Components/useFetch";
+// import SearchedCoin from "./Components/SearchedCoin";
 import HomePage from "./Components/HomePage";
+import Footer from "./Components/Footer";
 
 function App() {
+  //Firebase authentication stuff:
+
+  const [user, setUser] = useState(null);
+
+  // const [alert, setAlert] = useState({
+  //   open: false,
+  //   message: "",
+  //   type: "Success",
+  // });
+
+  //
   const navigateToAsset = useNavigate();
   // this is for coincard logic
   const [search, setSearch] = useState("");
@@ -85,6 +97,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }

@@ -3,8 +3,19 @@ import "../styles/Header.css";
 import { useNavigate } from "react-router-dom";
 import useModal from "./useModal";
 import Gainers from "./Gainers";
+import AuthModal from "../Authentication/AuthModal";
+import Alert from "./Alert";
 
 const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
+  // firebase
+
+  // const [alert, setAlert] = useState({
+  //   open: false,
+  //   message: "",
+  //   type: "Success",
+  // });
+
+  // Firebase
   const navigate = useNavigate();
   const [status, setStatus] = useState("offline"); // This will change if the user is logged on. So I will pass a function that will setStatus once the user is logged in. - You may need to add this to add.jsx because You'll wnat to detect status change somehow and then change this feature.
   const handleSubmit = (e) => {
@@ -68,7 +79,7 @@ const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
             <h5>Log Out</h5>
           ) : (
             <>
-              <h5>Create Account</h5> <h5>Login</h5>
+              <AuthModal />
             </>
           )}
         </nav>

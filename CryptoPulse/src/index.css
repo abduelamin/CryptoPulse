@@ -30,6 +30,7 @@ body {
   align-items: flex-start;
   margin-top: 60px;
   gap: 4em;
+  margin-bottom: 20px;
 }
 
 .modal-container {

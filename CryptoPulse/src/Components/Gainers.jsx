@@ -34,7 +34,7 @@ const Gainers = () => {
 
   return (
     <div className="gainers-carousel-container">
-      <h2 className="gainers-carousel-title">Top Gainers</h2>
+      <h2 className="gainers-carousel-title">Top Movers</h2>
       {topGainers.length === 0 ? null : (
         <Slider {...settings}>
           {topGainers.map((gainer) => (
@@ -50,7 +50,11 @@ const Gainers = () => {
                         ? "#2ecc71"
                         : "#e74c3c",
                   }}
-                >{`+ ${gainer.price_change_percentage_24h.toFixed(2)}%`}</p>
+                >
+                  {gainer.price_change_percentage_24h >= 0
+                    ? ` + ${gainer.price_change_percentage_24h.toFixed(2)}%`
+                    : `${gainer.price_change_percentage_24h.toFixed(2)}%`}
+                </p>
               </strong>
             </div>
           ))}

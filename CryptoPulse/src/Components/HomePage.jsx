@@ -4,7 +4,6 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 import CoinCard from "./CoinCard";
 import SearchedCoin from "./SearchedCoin";
 import useModal from "./useModal";
-import Gainers from "./Gainers";
 
 const HomePage = ({
   searchURL,
