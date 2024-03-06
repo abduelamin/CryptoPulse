@@ -7,6 +7,8 @@ import WatchList from "../Components/WatchList";
 import "../styles/UserSidebar.css";
 import { signOut } from "firebase/auth";
 import { auth } from "../Components/FireBase";
+import { doc, onSnapshot, setDoc } from "firebase/firestore";
+import { db } from "../Components/FireBase";
 
 export default function UserSidebar({
   user,
@@ -29,6 +31,10 @@ export default function UserSidebar({
   const removeFromWatchlist = (itemToRemove) => {
     const updatedWatchlist = watchlist.filter((item) => item !== itemToRemove);
     setWatchlist(updatedWatchlist);
+
+    // Update the Firestore database
+    const userWatchlistRef = doc(db, "WatchList", user.uid);
+    setDoc(userWatchlistRef, { coins: updatedWatchlist }, { merge: true });
   };
 
   return (
@@ -70,8 +76,8 @@ export default function UserSidebar({
             <Avatar
               onClick={toggleDrawer(true)}
               style={{
-                height: "20vh",
-                width: "20vw",
+                height: "13vh",
+                width: "8vw",
                 marginLeft: 15,
                 cursor: "pointer",
                 backgroundColor: "#3498DB",

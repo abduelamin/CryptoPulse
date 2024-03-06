@@ -79,9 +79,7 @@ const AssetPage = ({
     console.log(watchlist);
   };
 
-  const alreadyInWatchlist = watchlist.includes(coin?.id);
-
-  const removeFromWatchlist = async (params) => {
+  const removeFromWatchlist = async () => {
     const coinRef = doc(db, "WatchList", user.uid);
 
     try {
@@ -96,11 +94,12 @@ const AssetPage = ({
       // Update the state with the new watchlist
       setWatchlist(watchlist.filter((watch) => watch !== coin?.id));
     } catch (error) {
-      console.error("Error adding coin to watchlist:", error);
+      console.error("Error removing coin from watchlist:", error);
     }
     console.log(watchlist);
   };
 
+  const alreadyInWatchlist = watchlist.includes(coin?.id);
   useEffect(() => {
     let unsubscribe;
 
@@ -155,13 +154,9 @@ const AssetPage = ({
             </div>
             {user && (
               <Button
-                className="addBtn"
+                className={`addBtn ${alreadyInWatchlist ? "removed" : ""}`}
                 style={{
-                  width: "12%",
                   height: 40,
-                  backgroundColor: alreadyInWatchlist ? "#ff0000" : "#4ecf93",
-
-                  color: "#fff",
                 }}
                 onClick={
                   alreadyInWatchlist

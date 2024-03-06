@@ -8,6 +8,7 @@ import Alert from "./Alert";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./FireBase";
 import UserSidebar from "../Authentication/UserSidebar";
+import logo from "../assets/crypto-pulse-favicon-color.png";
 
 const Header = ({
   search,
@@ -55,8 +56,9 @@ const Header = ({
           navigate("/");
         }}
       >
-        Crypto Pulse
+        Crypto Pulse <img src={logo} alt="brand logo" />
       </h1>
+
       <br />
       <br />
       <h4 className="slogan">

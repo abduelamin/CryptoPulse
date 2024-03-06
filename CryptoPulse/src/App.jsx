@@ -56,7 +56,11 @@ function App() {
   };
 
   const handleCardClick = (param) => {
-    navigateToAsset(`/asset/${param}`);
+    console.log("Clicked on card with param:", param);
+    setTimeout(() => {
+      console.log("Navigating to:", `/asset/${param}`);
+      navigateToAsset(`/asset/${param}`);
+    }, 0);
   };
 
   // THIS FUNCTION ^^ IS WHAT WILL TAKE THE USER TO THE ASSET PAGE - YOU WILL NEED TO PROBABLY PASS A PARAMTER AND SO WHEN THE USER CLICKS ON IT, IT SENDS THE ID AS THE ARGUMENT HENCE DIPLSAYING THAT
