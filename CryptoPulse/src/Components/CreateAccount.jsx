@@ -93,7 +93,7 @@ const CreateAccount = ({ handleClose, alert, setAlert }) => {
       <Button
         variant="contained"
         size="large"
-        style={{ backgroundColor: "#EEBC10" }}
+        style={{ backgroundColor: "#3498db" }}
         onClick={handleSubmit}
       >
         Sign Up

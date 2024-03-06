@@ -1,6 +1,12 @@
 import React from "react";
 import "../styles/SearchedCoin.css";
-const SearchedCoin = ({ coin, handleCardClick, formatMarketCap }) => {
+const SearchedCoin = ({
+  coin,
+  handleCardClick,
+  formatMarketCap,
+  user,
+  setUser,
+}) => {
   return (
     <article
       className="cryptoCard"

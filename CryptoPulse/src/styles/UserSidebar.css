@@ -1,0 +1,50 @@
+.watchlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.watchListCard {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 10px;
+  width: 98%;
+  border: 1px solid #3498db;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.watchListCard img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.watchListCardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.watchListCard span {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.watchListCard button {
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  background-color: #e74c3c;
+  color: #ecf0f1;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 20px;
+}
+
+.watchListCard button:hover {
+  background-color: #c0392b;
+}

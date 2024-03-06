@@ -1,7 +1,7 @@
 header {
   background-color: #0d1421;
 
-  color: #ecf0f1;
+  color: #ecf1ed;
   padding: 20px;
   text-align: center;
 }
@@ -44,7 +44,7 @@ header input {
   font-size: 1rem;
   border: none;
   border-radius: 5px;
-  /* background-color: #34495e; */
+
   color: #34495e;
 }
 

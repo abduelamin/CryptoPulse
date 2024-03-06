@@ -1,21 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Header.css";
 import { useNavigate } from "react-router-dom";
 import useModal from "./useModal";
 import Gainers from "./Gainers";
 import AuthModal from "../Authentication/AuthModal";
 import Alert from "./Alert";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./FireBase";
+import UserSidebar from "../Authentication/UserSidebar";
 
-const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
-  // firebase
-
-  // const [alert, setAlert] = useState({
-  //   open: false,
-  //   message: "",
-  //   type: "Success",
-  // });
-
-  // Firebase
+const Header = ({
+  search,
+  setSearch,
+  searchURL,
+  setAPI,
+  setCoinSearch,
+  user,
+  setuser,
+  watchlist,
+  setWatchlist,
+  coin,
+  setCoin,
+}) => {
   const navigate = useNavigate();
   const [status, setStatus] = useState("offline"); // This will change if the user is logged on. So I will pass a function that will setStatus once the user is logged in. - You may need to add this to add.jsx because You'll wnat to detect status change somehow and then change this feature.
   const handleSubmit = (e) => {
@@ -27,7 +33,7 @@ const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
     const onlyLetters = /^[A-Za-z]+$/;
     const testedInput = onlyLetters.test(search);
     if (testedInput === false) {
-      openModal(); // Call the function to open the modal
+      openModal();
     }
 
     if (search.trim() === "") {
@@ -53,10 +59,7 @@ const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
       </h1>
       <br />
       <br />
-      <h4
-        className="slogan"
-        // style={{ fontSize: "1.2rem", color: "#007BFF", lineHeight: "1.5" }}
-      >
+      <h4 className="slogan">
         Stay Informed, Act Swiftly - Your Gateway to Real-Time Updates in the
         Crypto Universe!
       </h4>
@@ -79,7 +82,17 @@ const Header = ({ search, setSearch, searchURL, setAPI, setCoinSearch }) => {
             <h5>Log Out</h5>
           ) : (
             <>
-              <AuthModal />
+              {user ? (
+                <UserSidebar
+                  user={user}
+                  watchlist={watchlist}
+                  setWatchlist={setWatchlist}
+                  coin={coin}
+                  setCoin={setCoin}
+                />
+              ) : (
+                <AuthModal user={user} />
+              )}
             </>
           )}
         </nav>

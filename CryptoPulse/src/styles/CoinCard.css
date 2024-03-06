@@ -13,6 +13,7 @@
   background-color: #f0f0f0;
   cursor: pointer;
   animation: bounce 2s infinite ease;
+  box-shadow: 5px 5px 25px #0d1421;
 }
 
 @keyframes bounce {

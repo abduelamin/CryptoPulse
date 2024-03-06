@@ -1,27 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Header from "./Components/Header";
-// import CoinCard from "./Components/CoinCard";
-// import WatchList from "./Components/WatchList";
 import AssetPage from "./Components/AssetPage";
-// import useFetch from "./Components/useFetch";
-// import SearchedCoin from "./Components/SearchedCoin";
 import HomePage from "./Components/HomePage";
 import Footer from "./Components/Footer";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./Components/FireBase";
 
 function App() {
-  //Firebase authentication stuff:
+  //firebase logic
 
   const [user, setUser] = useState(null);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      user ? setUser(user) : setUser(null);
+    });
+  }, []);
 
-  // const [alert, setAlert] = useState({
-  //   open: false,
-  //   message: "",
-  //   type: "Success",
-  // });
+  const [watchlist, setWatchlist] = useState([]);
+
+  const [coin, setCoin] = useState("");
 
   //
+
   const navigateToAsset = useNavigate();
   // this is for coincard logic
   const [search, setSearch] = useState("");
@@ -67,6 +69,12 @@ function App() {
         setAPI={setAPI}
         setCoinSearch={setCoinSearch}
         handleCardClick={handleCardClick}
+        user={user}
+        setUser={setUser}
+        watchlist={watchlist}
+        setWatchlist={setWatchlist}
+        coin={coin}
+        setCoin={setCoin}
       />
 
       <Routes>
@@ -83,6 +91,8 @@ function App() {
               singleLoading={singleLoading}
               handleCardClick={handleCardClick}
               formatMarketCap={formatMarketCap}
+              user={user}
+              setUser={setUser}
             />
           }
         />
@@ -93,6 +103,12 @@ function App() {
               setSingleLoading={setSingleLoading}
               singleLoading={singleLoading}
               formatMarketCap={formatMarketCap}
+              user={user}
+              setUser={setUser}
+              watchlist={watchlist}
+              setWatchlist={setWatchlist}
+              coin={coin}
+              setCoin={setCoin}
             />
           }
         />

@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import "../styles/CoinCard.css";
 
-const CoinCard = ({ crypto, handleCardClick, formatMarketCap }) => {
+const CoinCard = ({
+  crypto,
+  handleCardClick,
+  formatMarketCap,
+  user,
+  setUser,
+}) => {
   return (
     <article
       className="cryptoCard"

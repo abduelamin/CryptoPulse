@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import { AppBar, Tab, Tabs } from "@mui/material";
 import Login from "../Components/Login";
 import CreateAccount from "../Components/CreateAccount";
-import Alert from "../Components/Alert"; // Import the Alert component
+import { useEffect } from "react";
 
 const style = {
   position: "absolute",
@@ -38,6 +38,11 @@ const AuthModal = () => {
     setValue(newValue);
   };
 
+  useEffect(() => {
+    if (!open) {
+      setAlert({ open: false, message: "", type: "" }); // Resets alert state
+    }
+  }, [open, setAlert]);
   return (
     <div>
       <Button

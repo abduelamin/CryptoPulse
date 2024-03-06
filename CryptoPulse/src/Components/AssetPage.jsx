@@ -5,9 +5,22 @@ import { useParams } from "react-router-dom";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import HomePage from "./HomePage";
 import Chart from "./Chart";
+import { Button } from "@mui/material";
+import { doc, onSnapshot, setDoc } from "firebase/firestore";
+import { db } from "./FireBase";
 
-const AssetPage = ({ singleLoading, setSingleLoading, formatMarketCap }) => {
-  const [coin, setCoin] = useState("");
+const AssetPage = ({
+  singleLoading,
+  setSingleLoading,
+  formatMarketCap,
+  user,
+  setUser,
+  watchlist,
+  setWatchlist,
+  coin,
+  setCoin,
+}) => {
+  // const [coin, setCoin] = useState("");
   const { id } = useParams();
 
   let assetURL = `https://api.coingecko.com/api/v3/coins/${id}`;
@@ -50,6 +63,67 @@ const AssetPage = ({ singleLoading, setSingleLoading, formatMarketCap }) => {
     return descriptionWithoutLinks;
   }
 
+  const handleAddToWatchList = async () => {
+    const coinRef = doc(db, "WatchList", user.uid);
+
+    try {
+      await setDoc(coinRef, {
+        coins: watchlist ? [...watchlist, coin?.id] : [coin?.id],
+      });
+
+      // Update the state with the new watchlist
+      setWatchlist(watchlist ? [...watchlist, coin?.id] : [coin?.id]);
+    } catch (error) {
+      console.error("Error adding coin to watchlist:", error);
+    }
+    console.log(watchlist);
+  };
+
+  const alreadyInWatchlist = watchlist.includes(coin?.id);
+
+  const removeFromWatchlist = async (params) => {
+    const coinRef = doc(db, "WatchList", user.uid);
+
+    try {
+      await setDoc(
+        coinRef,
+        {
+          coins: watchlist.filter((watch) => watch !== coin?.id),
+        },
+        { merge: true }
+      );
+
+      // Update the state with the new watchlist
+      setWatchlist(watchlist.filter((watch) => watch !== coin?.id));
+    } catch (error) {
+      console.error("Error adding coin to watchlist:", error);
+    }
+    console.log(watchlist);
+  };
+
+  useEffect(() => {
+    let unsubscribe;
+
+    if (user) {
+      const coinRef = doc(db, "WatchList", user.uid);
+      unsubscribe = onSnapshot(coinRef, (coin) => {
+        if (coin.exists()) {
+          console.log(coin.data().coins);
+          setWatchlist(coin.data().coins);
+        } else {
+          console.log("No Items in Watchlist");
+        }
+      });
+    }
+
+    return () => {
+      // checks if unsubscribe is a function before calling it as i had issues here
+      if (unsubscribe && typeof unsubscribe === "function") {
+        unsubscribe();
+      }
+    };
+  }, [user]);
+
   return (
     <section className="displaySection assetPage">
       {singleLoading ? (
@@ -79,7 +153,29 @@ const AssetPage = ({ singleLoading, setSingleLoading, formatMarketCap }) => {
                 <h1>${coin?.market_data?.current_price?.usd}</h1>
               </div>
             </div>
+            {user && (
+              <Button
+                className="addBtn"
+                style={{
+                  width: "12%",
+                  height: 40,
+                  backgroundColor: alreadyInWatchlist ? "#ff0000" : "#4ecf93",
+
+                  color: "#fff",
+                }}
+                onClick={
+                  alreadyInWatchlist
+                    ? removeFromWatchlist
+                    : handleAddToWatchList
+                }
+              >
+                {alreadyInWatchlist
+                  ? "Remove From Watchlist"
+                  : "Add To Watchlist"}
+              </Button>
+            )}
           </div>
+
           <div className="tableContent">
             <table>
               <thead>

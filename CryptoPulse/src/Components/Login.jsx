@@ -29,7 +29,7 @@ const Login = ({ handleClose, alert, setAlert }) => {
   useEffect(() => {
     if (alert.open && alert.type === "success") {
       // If it's a success alert, close the modal after a delay
-      const delay = 2000;
+      const delay = 3000;
       const timeoutId = setTimeout(() => {
         handleClose();
       }, delay);
@@ -70,7 +70,7 @@ const Login = ({ handleClose, alert, setAlert }) => {
       <Button
         variant="contained"
         size="large"
-        style={{ backgroundColor: "#EEBC10" }}
+        style={{ backgroundColor: "#3498db" }}
         onClick={handleSubmit}
       >
         Log In
