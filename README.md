@@ -13,21 +13,21 @@
 
 ## Technologies Used
 
-- **HTML, CSS, JavaScript**: Foundational web technologies for building a robust and responsive user interface. ![HTML](https://img.shields.io/badge/-HTML-orange) ![CSS](https://img.shields.io/badge/-CSS-blue) ![JavaScript](https://img.shields.io/badge/-JavaScript-yellow)
+- ![HTML](https://img.shields.io/badge/-HTML-orange) ![CSS](https://img.shields.io/badge/-CSS-blue) ![JavaScript](https://img.shields.io/badge/-JavaScript-yellow): Foundational web technologies for building a robust and responsive user interface.
 
-- **React.js**: A powerful JavaScript library for constructing interactive user interfaces. ![React](https://img.shields.io/badge/-React-blueviolet)
+- ![React](https://img.shields.io/badge/-React-blueviolet): A powerful JavaScript library for constructing interactive user interfaces.
 
-- **Node.js**: A JavaScript runtime enabling the execution of server-side code. ![Node.js](https://img.shields.io/badge/-Node.js-green)
+- ![Node.js](https://img.shields.io/badge/-Node.js-green): A JavaScript runtime enabling the execution of server-side code.
 
-- **Material-UI (MUI)**: A modern React UI framework for creating visually stunning and responsive web applications. ![Material-UI](https://img.shields.io/badge/-Material--UI-blue)
+- ![Material-UI](https://img.shields.io/badge/-Material--UI-blue): A modern React UI framework for creating visually stunning and responsive web applications.
 
-- **Chart.js**: A JavaScript charting library for crafting intuitive and interactive charts to visualize cryptocurrency price actions. ![Chart.js](https://img.shields.io/badge/-Chart.js-ff69b4)
+- ![Chart.js](https://img.shields.io/badge/-Chart.js-ff69b4): A JavaScript charting library for crafting intuitive and interactive charts to visualize cryptocurrency price actions.
 
-- **React Spinners**: A library for incorporating stylish spinners and loaders to enhance the user experience during data loading. ![React Spinners](https://img.shields.io/badge/-React%20Spinners-brightgreen)
+- ![React Spinners](https://img.shields.io/badge/-React%20Spinners-brightgreen)
+  : A library for incorporating stylish spinners and loaders to enhance the user experience during data loading.
+- ![Firebase](https://img.shields.io/badge/-Firebase-yellowgreen): A platform for building web and mobile applications with real-time database capabilities.
 
-- **Firebase**: A platform for building web and mobile applications with real-time database capabilities. ![Firebase](https://img.shields.io/badge/-Firebase-yellowgreen)
-
-- **Coingecko API (via Rapid API)**: An API delivering comprehensive cryptocurrency data, enabling real-time updates on market information. ![Coingecko API](https://img.shields.io/badge/-Coingecko%20API-9cf)
+- ![Coingecko API](https://img.shields.io/badge/-Coingecko%20API-9cf): An API delivering comprehensive cryptocurrency data, enabling real-time updates on market information.
 
 ## Features
 
@@ -53,7 +53,7 @@
 
 Embark on an immersive journey into the realm of cryptocurrency with the Crypto Pulse application, your gateway to real-time market data. Explore the dynamic world of digital assets, gain insights into market trends, and stay ahead in the ever-evolving landscape of crypto finance.
 
-To start your adventure, visit the [Crypto Pulse](link to your application) website and experience the power of real-time market information at your fingertips. Uncover the latest trends, monitor top-performing assets, and make informed decisions on your crypto investments. Happy exploring!
+To start your adventure, visit the [Crypto Pulse](https://cryptopulseapp.netlify.app/) website and experience the power of real-time market information at your fingertips. Uncover the latest trends, monitor top-performing assets, and make informed decisions on your crypto investments. Happy exploring!
 
 ![CP-Homepage](https://github.com/abduelamin/CryptoPulse/assets/149680577/5f34364d-0c36-4f00-8a1c-d3615b8b2314)
 ![CP-assetpage](https://github.com/abduelamin/CryptoPulse/assets/149680577/6ad765cf-3694-4d64-8aad-4c9f5c9ddcf2)
