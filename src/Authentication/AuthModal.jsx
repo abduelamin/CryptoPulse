@@ -8,13 +8,14 @@ import { AppBar, Tab, Tabs } from "@mui/material";
 import Login from "../Components/Login";
 import CreateAccount from "../Components/CreateAccount";
 import { useEffect } from "react";
-
+import "../styles/AuthModal.css";
+// AuthModal.jsx
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 330,
   backgroundColor: "#EEDDCC",
   color: "white",
   borderRadius: 10,

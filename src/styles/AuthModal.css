@@ -1,0 +1,28 @@
+.modalContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px; /* Set a max-width to prevent overshooting on smaller screens */
+  background-color: #eeddcc;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 24;
+  padding: 16px;
+}
+
+.tabsContainer {
+  background-color: transparent;
+  color: white;
+  border-radius: 10px;
+}
+
+/* Add any other styles as needed */
+
+/* Media query for smaller screens */
+@media (max-width: 440px) {
+  .modalContainer {
+    width: 90%;
+  }
+}
