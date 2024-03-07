@@ -13,6 +13,8 @@ const Chart = ({ coin }) => {
     const apiUrl = `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=usd&days=${days}`;
 
     try {
+      // Introduce a delay between requests because sometimes the chart data doesnt fetch unless the user refreshes the page again
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       const response = await fetch(apiUrl);
       const data = await response.json();
       setChartData(data.prices);

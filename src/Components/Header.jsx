@@ -77,7 +77,9 @@ const Header = ({
               setSearch(e.target.value);
             }}
           />
-          <button type="submit">Search</button>
+          <button type="submit" onClick={handleSubmit}>
+            Search
+          </button>
         </form>
         <nav>
           {status === "online" ? (
